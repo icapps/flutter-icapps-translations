@@ -16,7 +16,14 @@ Packages used:
 
 ## Setup
 
-### Add to pubspec
+### Add dependency to pubspec
+
+```
+dev-dependencies:
+  icapps-translations: <latest-version>
+```
+
+### Add config to pubspec
 
 Add your locale folder to the assets to make use all your translations are loaded.
 ```
