@@ -14,7 +14,7 @@ Packages used:
 
 ## Example
 
-<img src="assets/example.gif" alt="Example" width="300"/>
+<img src="https://github.com/icapps/flutter-icapps-translations/blob/master/assets/example.gif" alt="Example" width="300"/>
 
 ## Setup
 
