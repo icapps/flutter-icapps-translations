@@ -12,7 +12,7 @@ Packages used:
 
 ## Example
 
-![Example](assets/example.gif =250x)
+<img src="assets/example.gif" alt="Example" width="300"/>
 
 ## Setup
 
