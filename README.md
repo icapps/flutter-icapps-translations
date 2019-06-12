@@ -2,6 +2,8 @@
 
 A dart package to automaticly download translations from the icapps translation tool.
 
+[![pub package](https://img.shields.io/pub/v/icapps_translations.svg)](https://pub.dartlang.org/packages/icapps_translations)
+
 This repo contains an example how to use this package.
 
 Packages used:
