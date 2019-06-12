@@ -20,6 +20,7 @@ Packages used:
 
 ### Add dependency to pubspec
 
+[![pub package](https://img.shields.io/pub/v/icapps_translations.svg)](https://pub.dartlang.org/packages/icapps_translations)
 ```
 dev-dependencies:
   icapps-translations: <latest-version>
