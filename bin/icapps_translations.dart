@@ -18,9 +18,10 @@ Map<String, dynamic> defaultTranslations;
 
 Future<void> main(List<String> args) async {
   final pubspecYaml = File(join(Directory.current.path, 'pubspec.yaml'));
-  if (!pubspecYaml.existsSync())
+  if (!pubspecYaml.existsSync()){
     throw Exception(
         'This program should be run from the root of a flutter/dart project');
+  }
 
   await parsePubspec(pubspecYaml);
 
