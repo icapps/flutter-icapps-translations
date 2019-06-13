@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.2] - 2019-02-13
+### Added
+-dart format
+
 ## [0.1.1] - 2019-02-13
 ### Added
 -Fixed a pub.dev linting warning for better health
