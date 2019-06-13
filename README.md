@@ -8,6 +8,7 @@ This repo contains an example how to use this package.
 
 Packages used:
  - flutter_localizations
+ - shared_preferences
  - provider
  - kiwi
  - icapps_translations
@@ -23,7 +24,7 @@ Packages used:
 [![pub package](https://img.shields.io/pub/v/icapps_translations.svg)](https://pub.dartlang.org/packages/icapps_translations)
 ```
 dev-dependencies:
-  icapps-translations: <latest-version>
+  icapps_translations: <latest-version>
 ```
 
 ### Add config to pubspec
