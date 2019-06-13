@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:icapps_translations_example/util/locale/localization.dart';
+import 'package:flutter/material.dart';
 
 //============================================================//
 //THIS FILE IS AUTO GENERATED. DO NOT EDIT//
@@ -9,13 +9,13 @@ import 'package:icapps_translations_example/util/locale/localization.dart';
 class LocalizationDelegate extends LocalizationsDelegate<Localization> {
   static const defaultLocale = Locale('nl');
   static const supportedLanguages = [
-    'en',
-    'nl',
+  'en',
+  'nl',
   ];
 
   static const supportedLocales = [
-    Locale('en'),
-    Locale('nl'),
+  Locale('en'),
+  Locale('nl'),
   ];
 
   Locale newLocale;
@@ -38,4 +38,5 @@ class LocalizationDelegate extends LocalizationsDelegate<Localization> {
 
   @override
   bool shouldReload(LocalizationsDelegate<Localization> old) => true;
+
 }

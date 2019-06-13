@@ -25,7 +25,7 @@ dev_dependencies:
       ref: 6ead6e68b535bf935df37b29f7d25b283337225e
       path: kiwi_generator
   icapps_translations:
-    path: ../icapps_translations/
+    path: ../
 
 flutter:
   assets:
