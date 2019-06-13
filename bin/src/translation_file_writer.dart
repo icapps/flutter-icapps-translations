@@ -5,7 +5,8 @@ class FileWriter {
   static const REGEX_INDEX_GROUP_INDEX = 1;
   static const REGEX_TYPE_GROUP_INDEX = 2;
 
-  static void buildTranslationFunction(StringBuffer sb, String key, String value) {
+  static void buildTranslationFunction(
+      StringBuffer sb, String key, String value) {
     if (value == null || value.isEmpty) {
       _buildDefaultFunction(sb, key, value);
       return;
@@ -20,11 +21,18 @@ class FileWriter {
 
       final validMatcher = List<RegExpMatch>();
       allMatched.forEach((match) {
-        final sameTypeMatch = validMatcher.where((validMatch) => validMatch.group(REGEX_INDEX_GROUP_INDEX) == match.group(REGEX_INDEX_GROUP_INDEX));
-        if (sameTypeMatch.isNotEmpty && sameTypeMatch.first.group(REGEX_TYPE_GROUP_INDEX) != match.group(REGEX_TYPE_GROUP_INDEX)) {
-          throw Exception('$key contains a value with more than 1 argument with the same index but different type');
+        final sameTypeMatch = validMatcher.where((validMatch) =>
+            validMatch.group(REGEX_INDEX_GROUP_INDEX) ==
+            match.group(REGEX_INDEX_GROUP_INDEX));
+        if (sameTypeMatch.isNotEmpty &&
+            sameTypeMatch.first.group(REGEX_TYPE_GROUP_INDEX) !=
+                match.group(REGEX_TYPE_GROUP_INDEX)) {
+          throw Exception(
+              '$key contains a value with more than 1 argument with the same index but different type');
         }
-        if (validMatcher.where((validMatch) => validMatch.group(0) == match.group(0)).isEmpty) {
+        if (validMatcher
+            .where((validMatch) => validMatch.group(0) == match.group(0))
+            .isEmpty) {
           validMatcher.add(match);
         }
       });
@@ -64,6 +72,8 @@ class FileWriter {
   }
 
   static void _buildDefaultFunction(StringBuffer sb, String key, String value) {
-    sb..writeln("  String get ${CaseUtil.getCamelcase(key)} => _t('$key');")..writeln();
+    sb
+      ..writeln("  String get ${CaseUtil.getCamelcase(key)} => _t('$key');")
+      ..writeln();
   }
 }
