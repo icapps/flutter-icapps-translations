@@ -130,9 +130,9 @@ void createLocalizationDelegateFile() {
     ..writeln('class LocalizationDelegate extends LocalizationsDelegate<Localization> {')
     ..writeln("  static const defaultLocale = Locale('${params.defaultLanguage}');")
     ..writeln('  static const supportedLanguages = [');
-  params.languages.forEach((language) => sb.writeln("  '$language',"));
+  params.languages.forEach((language) => sb.writeln("    '$language',"));
   sb..writeln('  ];')..writeln()..writeln('  static const supportedLocales = [');
-  params.languages.forEach((language) => sb.writeln("  Locale('$language'),"));
+  params.languages.forEach((language) => sb.writeln("    Locale('$language'),"));
   sb
     ..writeln('  ];')
     ..writeln()
