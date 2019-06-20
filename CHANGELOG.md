@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5] - 2019-02-13
+### Added
+-Added a new template project for the translations
+
+### Fixed
+-Fixed a crash when no translations were added.
+
 ## [0.1.4] - 2019-02-13
 ### Fixed
 -dart formatting
