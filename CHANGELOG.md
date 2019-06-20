@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.7] - 2019-06-20
+### Fixed
+-Fixed dartfmt
+
 ## [0.1.6] - 2019-06-20
 ### Fixed
 -Fixed formatting for the localization_delegate.dart file
