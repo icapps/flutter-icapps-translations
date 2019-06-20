@@ -42,4 +42,14 @@ class Localization {
     return value;
   }
 
+  String get appTitle => _t('app_title');
+
+  String get retryBtn => _t('retry_btn');
+
+  String userClickMessage(String arg1) => _t('user_click_message', args: [arg1]);
+
+  String get usersNotFound => _t('users_not_found');
+
+  String get welcomeMessage => _t('welcome_message');
+
 }

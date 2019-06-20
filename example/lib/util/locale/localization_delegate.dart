@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 class LocalizationDelegate extends LocalizationsDelegate<Localization> {
   static const defaultLocale = Locale('nl');
   static const supportedLanguages = [
-  'en',
-  'nl',
+    'en',
+    'nl',
   ];
 
   static const supportedLocales = [
-  Locale('en'),
-  Locale('nl'),
+    Locale('en'),
+    Locale('nl'),
   ];
 
   Locale newLocale;
