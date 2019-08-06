@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.8] - 2019-06-20
+### Fixed
+-Fixed documentation for arguments %1$s or %1$d
+-Fixed dartfmt
+
 ## [0.1.7] - 2019-06-20
 ### Fixed
 -Fixed dartfmt
