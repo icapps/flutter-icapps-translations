@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.9] - 2019-08-19
+### Added
+-Errorhandling with an easy to understand message
+
 ## [0.1.8] - 2019-06-20
 ### Fixed
 -Fixed documentation for arguments %1$s or %1$d
