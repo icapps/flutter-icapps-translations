@@ -48,6 +48,9 @@ Future<void> _buildJson(String language) async {
   final headers = Map<String, String>()..putIfAbsent('Authorization', () => 'Token token=${params.apiKey}');
   final url = '$baseUrl$language.json';
   final response = await http.get(url, headers: headers);
+  if (response.statusCode != 200) {
+    throw Exception('\n\nFailed to get $url with statuscode ${response.statusCode}\n');
+  }
   final file = File(join(Directory.current.path, assetsDir, '$language.json'));
   const encoder = JsonEncoder.withIndent('  ');
   final body = json.decode(response.body);
