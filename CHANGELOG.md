@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0] - 2019-10-21
+### Added
+-Support for test
+
+### Removed
+-Unneeded logs
+
 ## [0.1.9] - 2019-08-19
 ### Added
 -Errorhandling with an easy to understand message
