@@ -78,7 +78,6 @@ void createLocalizationFile() {
     ..writeln('  ')
     ..writeln('  static Future<Localization> load(Locale locale, {bool isInTest = false}) async {')
     ..writeln('    final localizations = Localization();')
-    ..writeln("    print('Switching to \${locale.languageCode}');")
     ..writeln('    if (isInTest) {')
     ..writeln('      return localizations;')
     ..writeln('    }')
