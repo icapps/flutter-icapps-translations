@@ -82,7 +82,7 @@ void createLocalizationFile() {
     ..writeln()
     ..writeln(
         '  static Localization of(BuildContext context) => Localizations.of<Localization>(context, Localization);')
-    ..writeln('  ')
+    ..writeln()
     ..writeln(
         '  static Future<Localization> load(Locale locale, {bool isInTest = false}) async {')
     ..writeln('    final localizations = Localization();')
@@ -139,9 +139,9 @@ void createLocalizationDelegateFile() {
   final sb = StringBuffer()
     ..writeln("import 'dart:async';")
     ..writeln()
+    ..writeln("import 'package:flutter/material.dart';")
     ..writeln(
         "import 'package:${params.projectName}/util/locale/localization.dart';")
-    ..writeln("import 'package:flutter/material.dart';")
     ..writeln()
     ..writeln(
         '//============================================================//')

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.1] - 2019-10-21
+### Fixed
+-Formatting
+
 ## [0.2.0] - 2019-10-21
 ### Added
 -Support for test
