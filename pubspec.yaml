@@ -1,7 +1,6 @@
 name: icapps_translations
 description: Dart tool to generate flutter translations code from the icapps translations tool
 version: 1.0.0
-author: Koen Van Looveren <koen.vanlooveren@icapps.com>
 homepage: https://github.com/icapps/flutter-icapps-translations
 
 environment:
