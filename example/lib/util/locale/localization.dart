@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:icapps_translations_example/util/locale/localization_keys.dart';
 
 //============================================================//
 //THIS FILE IS AUTO GENERATED. DO NOT EDIT//
@@ -10,7 +11,7 @@ class Localization {
   Map<dynamic, dynamic> _localisedValues = Map();
 
   static Localization of(BuildContext context) => Localizations.of<Localization>(context, Localization);
-  
+
   static Future<Localization> load(Locale locale, {bool isInTest = false}) async {
     final localizations = Localization();
     if (isInTest) {
@@ -44,24 +45,7 @@ class Localization {
     return value;
   }
 
-  String get appTitle => _t('app_title');
+  String get appTitle => _t(LocalizationKeys.appTitle);
 
-  String get backgroundCancelAllTasks => _t('background_cancel_all_tasks');
-
-  String get backgroundPeriodicNetworkTask => _t('background_periodic_network_task');
-
-  String get backgroundPeriodicTask => _t('background_periodic_task');
-
-  String get backgroundSimpleTask => _t('background_simple_task');
-
-  String get backgroundTitle => _t('background_title');
-
-  String get retryBtn => _t('retry_btn');
-
-  String userClickMessage(String arg1) => _t('user_click_message', args: [arg1]);
-
-  String get usersNotFound => _t('users_not_found');
-
-  String get welcomeMessage => _t('welcome_message');
-
+  String get welcomeMessage => _t(LocalizationKeys.welcomeMessage);
 }

@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 
+import 'src/case_util.dart';
 import 'src/params.dart';
 import 'src/translation_file_writer.dart';
 
@@ -35,6 +36,7 @@ Future<void> main(List<String> args) async {
   await Future.wait(
       params.languages.map((language) async => _buildJson(language)).toList());
 
+  createLocalizationKeysFile();
   createLocalizationFile();
   createLocalizationDelegateFile();
   print('Done!!!');
@@ -65,12 +67,40 @@ Future<void> _buildJson(String language) async {
   }
 }
 
+void createLocalizationKeysFile() {
+  final sb = StringBuffer()
+    ..writeln(
+        '//============================================================//')
+    ..writeln('//THIS FILE IS AUTO GENERATED. DO NOT EDIT//')
+    ..writeln(
+        '//============================================================//')
+    ..writeln('class LocalizationKeys {')
+    ..writeln();
+  defaultTranslations.forEach((key, value) {
+    final correctKey = CaseUtil.getCamelcase(key);
+    sb..writeln('  static const $correctKey = \'$key\';')..writeln();
+  });
+  sb.writeln('}');
+
+  // Write to file
+  final localizationKeysFile =
+      File(join(Directory.current.path, outputDir, 'localization_keys.dart'));
+  if (!localizationKeysFile.existsSync()) {
+    print('localization_keys.dart does not exists');
+    print('Creating localization_keys.dart ...');
+    localizationKeysFile.createSync(recursive: true);
+  }
+  localizationKeysFile.writeAsStringSync(sb.toString());
+}
+
 void createLocalizationFile() {
   final sb = StringBuffer()
     ..writeln("import 'dart:convert';")
     ..writeln()
     ..writeln("import 'package:flutter/services.dart';")
     ..writeln("import 'package:flutter/widgets.dart';")
+    ..writeln(
+        "import 'package:${params.projectName}/util/locale/localization_keys.dart';")
     ..writeln()
     ..writeln(
         '//============================================================//')
@@ -122,7 +152,11 @@ void createLocalizationFile() {
     ..writeln();
   defaultTranslations.forEach(
       (key, value) => FileWriter.buildTranslationFunction(sb, key, value));
-  sb.writeln('}');
+  sb
+    ..writeln(
+        '  String getTranslation(String key, {List<dynamic> args}) => _t(key, args: args ?? List());')
+    ..writeln()
+    ..writeln('}');
 
   // Write to file
   final localizationFile =

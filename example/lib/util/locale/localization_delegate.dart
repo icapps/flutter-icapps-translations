@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:icapps_translations_example/util/locale/localization.dart';
 import 'package:flutter/material.dart';
+import 'package:icapps_translations_example/util/locale/localization.dart';
 
 //============================================================//
 //THIS FILE IS AUTO GENERATED. DO NOT EDIT//

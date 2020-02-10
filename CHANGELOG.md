@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.0] - 2020-02-10
+### Added
+-Added support for getting the Localization.keys
+-Added support for getting a translation by key and args
+
 ## [0.2.1] - 2019-10-21
 ### Fixed
 -Formatting

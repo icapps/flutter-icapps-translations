@@ -17,7 +17,8 @@ class FileWriter {
       return;
     }
     try {
-      final tmpSb = StringBuffer('  String ${CaseUtil.getCamelcase(key)}(');
+      final camelKey = CaseUtil.getCamelcase(key);
+      final tmpSb = StringBuffer('  String $camelKey(');
 
       final validMatcher = List<RegExpMatch>();
       allMatched.forEach((match) {
@@ -44,7 +45,7 @@ class FileWriter {
           tmpSb.write(', ');
         }
       });
-      tmpSb.write(") => _t('$key', args: [");
+      tmpSb.write(') => _t(LocalizationKeys.$camelKey, args: [');
       validMatcher.asMap().forEach((index, match) {
         if (index != 0) {
           tmpSb.write(', ');
@@ -72,8 +73,10 @@ class FileWriter {
   }
 
   static void _buildDefaultFunction(StringBuffer sb, String key, String value) {
+    final camelCaseKey = CaseUtil.getCamelcase(key);
     sb
-      ..writeln("  String get ${CaseUtil.getCamelcase(key)} => _t('$key');")
+      ..writeln(
+          '  String get $camelCaseKey => _t(LocalizationKeys.$camelCaseKey);')
       ..writeln();
   }
 }
