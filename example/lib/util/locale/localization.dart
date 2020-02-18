@@ -26,7 +26,7 @@ class Localization {
   String _t(String key, {List<dynamic> args}) {
     try {
       String value = _localisedValues[key];
-      if (value == null) return '⚠$key⚠';
+      if (value == null) return '$key';
       if (args == null || args.isEmpty) return value;
       args.asMap().forEach((index, arg) => value = _replaceWith(value, arg, index + 1));
       return value;
@@ -45,7 +45,6 @@ class Localization {
     return value;
   }
 
-  String get appTitle => _t(LocalizationKeys.appTitle);
+  String getTranslation(String key, {List<dynamic> args}) => _t(key, args: args ?? List());
 
-  String get welcomeMessage => _t(LocalizationKeys.welcomeMessage);
 }

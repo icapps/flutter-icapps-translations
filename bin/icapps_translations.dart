@@ -50,6 +50,7 @@ Future<void> parsePubspec(File pubspecYaml) async {
 Future<void> _buildJson(String language) async {
   print('Updating $language...');
   final headers = Map<String, String>()
+    ..putIfAbsent('Content-type', () => 'application/json')
     ..putIfAbsent('Authorization', () => 'Token token=${params.apiKey}');
   final url = '$baseUrl$language.json';
   final response = await http.get(url, headers: headers);
@@ -59,7 +60,8 @@ Future<void> _buildJson(String language) async {
   }
   final file = File(join(Directory.current.path, assetsDir, '$language.json'));
   const encoder = JsonEncoder.withIndent('  ');
-  final body = json.decode(response.body);
+  final changedBody = response.body.replaceAll(r'\\n', r'\n');
+  final body = json.decode(changedBody);
   final translations = body['translations'] ?? Map<String, dynamic>();
   file.writeAsStringSync(encoder.convert(translations));
   if (language == params.defaultLanguage) {
@@ -130,7 +132,7 @@ void createLocalizationFile() {
     ..writeln('  String _t(String key, {List<dynamic> args}) {')
     ..writeln('    try {')
     ..writeln('      String value = _localisedValues[key];')
-    ..writeln("      if (value == null) return '⚠\$key⚠';")
+    ..writeln("      if (value == null) return '\$key';")
     ..writeln('      if (args == null || args.isEmpty) return value;')
     ..writeln(
         '      args.asMap().forEach((index, arg) => value = _replaceWith(value, arg, index + 1));')
