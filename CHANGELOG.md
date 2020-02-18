@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.1] - 2020-02-18
+### Removed
+- Removed ⚠ before and after keys.
+### Added
+- Support for `\n`
+
 ## [1.0.0] - 2020-02-10
 ### Added
 -Added support for getting the Localization.keys
