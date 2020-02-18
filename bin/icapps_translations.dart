@@ -130,7 +130,7 @@ void createLocalizationFile() {
     ..writeln('  String _t(String key, {List<dynamic> args}) {')
     ..writeln('    try {')
     ..writeln('      String value = _localisedValues[key];')
-    ..writeln("      if (value == null) return '⚠\$key⚠';")
+    ..writeln("      if (value == null) return '\$key';")
     ..writeln('      if (args == null || args.isEmpty) return value;')
     ..writeln(
         '      args.asMap().forEach((index, arg) => value = _replaceWith(value, arg, index + 1));')
