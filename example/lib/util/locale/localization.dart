@@ -12,9 +12,9 @@ class Localization {
 
   static Localization of(BuildContext context) => Localizations.of<Localization>(context, Localization);
 
-  static Future<Localization> load(Locale locale, {bool isInTest = false}) async {
+  static Future<Localization> load(Locale locale, {bool showLocalizationKeys = false}) async {
     final localizations = Localization();
-    if (isInTest) {
+    if (showLocalizationKeys) {
       return localizations;
     }
     final jsonContent = await rootBundle.loadString('assets/locale/${locale.languageCode}.json');
