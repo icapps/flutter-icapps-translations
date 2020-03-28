@@ -45,6 +45,8 @@ Future<void> main(List<String> args) async {
 Future<void> parsePubspec(File pubspecYaml) async {
   final pubspecContent = pubspecYaml.readAsStringSync();
   params = Params(pubspecContent);
+  print('Default language: ${params.defaultLanguage}');
+  print('Supported languages: ${params.languages}');
 }
 
 Future<void> _buildJson(String language) async {
@@ -116,9 +118,9 @@ void createLocalizationFile() {
         '  static Localization of(BuildContext context) => Localizations.of<Localization>(context, Localization);')
     ..writeln()
     ..writeln(
-        '  static Future<Localization> load(Locale locale, {bool isInTest = false}) async {')
+        '  static Future<Localization> load(Locale locale, {bool showLocalizationKeys = false}) async {')
     ..writeln('    final localizations = Localization();')
-    ..writeln('    if (isInTest) {')
+    ..writeln('    if (showLocalizationKeys) {')
     ..writeln('      return localizations;')
     ..writeln('    }')
     ..writeln(
@@ -201,14 +203,14 @@ void createLocalizationDelegateFile() {
     ..writeln()
     ..writeln('  Locale newLocale;')
     ..writeln('  Locale activeLocale;')
-    ..writeln('  bool isInTest;')
+    ..writeln('  bool showLocalizationKeys;')
     ..writeln()
     ..writeln(
-        '  LocalizationDelegate({this.newLocale, this.isInTest = false}) {')
+        '  LocalizationDelegate({this.newLocale, this.showLocalizationKeys = false}) {')
     ..writeln('    if (newLocale != null) {')
     ..writeln('      activeLocale = newLocale;')
     ..writeln('    }')
-    ..writeln('    isInTest ??= false;')
+    ..writeln('    showLocalizationKeys ??= false;')
     ..writeln('  }')
     ..writeln()
     ..writeln('  @override')
@@ -218,7 +220,7 @@ void createLocalizationDelegateFile() {
     ..writeln('  @override')
     ..writeln('  Future<Localization> load(Locale locale) async {')
     ..writeln('    activeLocale = newLocale ?? locale;')
-    ..writeln('    return Localization.load(activeLocale, isInTest: isInTest);')
+    ..writeln('    return Localization.load(activeLocale, showLocalizationKeys: showLocalizationKeys);')
     ..writeln('  }')
     ..writeln()
     ..writeln('  @override')

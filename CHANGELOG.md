@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.0] - 2020-02-10
+### Breaking
+-isInTest => showLocalizationKeys
+ Behaviour is still the same.
+
 ## [1.0.1] - 2020-02-18
 ### Removed
 - Removed ⚠ before and after keys.
