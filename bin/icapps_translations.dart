@@ -11,8 +11,12 @@ import 'src/translation_file_writer.dart';
 
 const baseUrl = 'https://translations.icapps.com/api/translations/';
 
-final outputDir = join('lib', 'util', 'locale');
-final assetsDir = join('assets', 'locale');
+final defaultOutputDir = join('lib', 'util', 'locale');
+final defaultAssetsDir = join('assets', 'locale');
+
+final outputDir = defaultOutputDir;
+var localeAssetsDir = defaultAssetsDir;
+var assetsDir = defaultAssetsDir;
 
 Params params;
 Map<String, dynamic> defaultTranslations;
@@ -26,9 +30,9 @@ Future<void> main(List<String> args) async {
 
   await parsePubspec(pubspecYaml);
 
-  final localeFolder = Directory(join(Directory.current.path, assetsDir));
+  final localeFolder = Directory(join(Directory.current.path, localeAssetsDir));
   if (!localeFolder.existsSync()) {
-    print('assets/locale folder does not yet exist.');
+    print('$localeAssetsDir folder does not yet exist.');
     print('Creating folder...');
     localeFolder.createSync(recursive: true);
   }
@@ -60,7 +64,8 @@ Future<void> _buildJson(String language) async {
     throw Exception(
         '\n\nFailed to get $url with statuscode ${response.statusCode}\n');
   }
-  final file = File(join(Directory.current.path, assetsDir, '$language.json'));
+  final file =
+      File(join(Directory.current.path, localeAssetsDir, '$language.json'));
   const encoder = JsonEncoder.withIndent('  ');
   final changedBody = response.body.replaceAll(r'\\n', r'\n');
   final body = json.decode(changedBody);
@@ -124,7 +129,7 @@ void createLocalizationFile() {
     ..writeln('      return localizations;')
     ..writeln('    }')
     ..writeln(
-        "    final jsonContent = await rootBundle.loadString('assets/locale/\${locale.languageCode}.json');")
+        "    final jsonContent = await rootBundle.loadString('$assetsDir\${locale.languageCode}.json');")
     ..writeln(
         '    final Map<String, dynamic> values = json.decode(jsonContent);')
     ..writeln('    localizations._localisedValues = values;')
@@ -220,7 +225,8 @@ void createLocalizationDelegateFile() {
     ..writeln('  @override')
     ..writeln('  Future<Localization> load(Locale locale) async {')
     ..writeln('    activeLocale = newLocale ?? locale;')
-    ..writeln('    return Localization.load(activeLocale, showLocalizationKeys: showLocalizationKeys);')
+    ..writeln(
+        '    return Localization.load(activeLocale, showLocalizationKeys: showLocalizationKeys);')
     ..writeln('  }')
     ..writeln()
     ..writeln('  @override')

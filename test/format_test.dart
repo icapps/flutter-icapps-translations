@@ -25,13 +25,13 @@ void main() {
     test('Test translations with 1 string argument', () {
       final sb = StringBuffer();
       FileWriter.buildTranslationFunction(sb, 'app_title', 'hallo %1\$s');
-      expect(sb.toString(), equals("  String appTitle(String arg1) => _t(LocalizationKeys.appTitle, args: [arg1]);\n\n"));
+      expect(sb.toString(), equals('  String appTitle(String arg1) => _t(LocalizationKeys.appTitle, args: [arg1]);\n\n'));
     });
 
     test('Test translations with 2 string arguments', () {
       final sb = StringBuffer();
       FileWriter.buildTranslationFunction(sb, 'app_title', 'hallo %1\$s %2\$s');
-      expect(sb.toString(), equals("  String appTitle(String arg1, String arg2) => _t(LocalizationKeys.appTitle, args: [arg1, arg2]);\n\n"));
+      expect(sb.toString(), equals('  String appTitle(String arg1, String arg2) => _t(LocalizationKeys.appTitle, args: [arg1, arg2]);\n\n'));
     });
 
     test('Test translations with 1 string argument but 2 string replacements', () {
@@ -63,7 +63,7 @@ void main() {
     test('Test translations with 1 number argument but 2 number replacements', () {
       final sb = StringBuffer();
       FileWriter.buildTranslationFunction(sb, 'app_title', 'hallo %1\$d %1\$d');
-      expect(sb.toString(), equals("  String appTitle(num arg1) => _t(LocalizationKeys.appTitle, args: [arg1]);\n\n"));
+      expect(sb.toString(), equals('  String appTitle(num arg1) => _t(LocalizationKeys.appTitle, args: [arg1]);\n\n'));
     });
 
     test('Test translations with 11 arguments of the same index and same type', () {

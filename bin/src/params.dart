@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:yaml/yaml.dart';
 
+import '../icapps_translations.dart';
+
 class Params {
   static const icappsTranslationsYaml = 'icapps_translations';
   static const ENV_API_KEY = 'API_KEY_ICAPPS_TRANSLATIONS';
@@ -66,6 +68,18 @@ class Params {
     }
     if (!languages.contains(defaultLanguage)) {
       throw Exception('default language is not included in the languages list');
+    }
+
+    localeAssetsDir = config['locale_assets_path'];
+    localeAssetsDir ??= defaultAssetsDir;
+    if (!localeAssetsDir.endsWith('/')) {
+      localeAssetsDir += '/';
+    }
+
+    assetsDir = config['assets_path'];
+    assetsDir ??= defaultAssetsDir;
+    if (!assetsDir.endsWith('/')) {
+      assetsDir += '/';
     }
   }
 }
