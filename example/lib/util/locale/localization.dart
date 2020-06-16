@@ -17,7 +17,7 @@ class Localization {
     if (showLocalizationKeys) {
       return localizations;
     }
-    final jsonContent = await rootBundle.loadString('assets/locale/${locale.languageCode}.json');
+    final jsonContent = await rootBundle.loadString('assets/localization/${locale.languageCode}.json');
     final Map<String, dynamic> values = json.decode(jsonContent);
     localizations._localisedValues = values;
     return localizations;
@@ -44,6 +44,8 @@ class Localization {
     }
     return value;
   }
+
+  String get welcomeMessage => _t(LocalizationKeys.welcomeMessage);
 
   String getTranslation(String key, {List<dynamic> args}) => _t(key, args: args ?? List());
 

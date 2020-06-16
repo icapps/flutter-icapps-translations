@@ -11,8 +11,12 @@ import 'src/translation_file_writer.dart';
 
 const baseUrl = 'https://translations.icapps.com/api/translations/';
 
-final outputDir = join('lib', 'util', 'locale');
-final assetsDir = join('assets', 'locale');
+final defaultOutputDir = join('lib', 'util', 'locale');
+final defaultAssetsDir = join('assets', 'locale');
+
+final outputDir = defaultOutputDir;
+var localeAssetsDir = defaultAssetsDir;
+var assetsDir = defaultAssetsDir;
 
 Params params;
 Map<String, dynamic> defaultTranslations;
@@ -20,21 +24,19 @@ Map<String, dynamic> defaultTranslations;
 Future<void> main(List<String> args) async {
   final pubspecYaml = File(join(Directory.current.path, 'pubspec.yaml'));
   if (!pubspecYaml.existsSync()) {
-    throw Exception(
-        'This program should be run from the root of a flutter/dart project');
+    throw Exception('This program should be run from the root of a flutter/dart project');
   }
 
   await parsePubspec(pubspecYaml);
 
-  final localeFolder = Directory(join(Directory.current.path, assetsDir));
+  final localeFolder = Directory(join(Directory.current.path, localeAssetsDir));
   if (!localeFolder.existsSync()) {
-    print('assets/locale folder does not yet exist.');
+    print('$localeAssetsDir folder does not yet exist.');
     print('Creating folder...');
     localeFolder.createSync(recursive: true);
   }
 
-  await Future.wait(
-      params.languages.map((language) async => _buildJson(language)).toList());
+  await Future.wait(params.languages.map((language) async => _buildJson(language)).toList());
 
   createLocalizationKeysFile();
   createLocalizationFile();
@@ -51,16 +53,13 @@ Future<void> parsePubspec(File pubspecYaml) async {
 
 Future<void> _buildJson(String language) async {
   print('Updating $language...');
-  final headers = Map<String, String>()
-    ..putIfAbsent('Content-type', () => 'application/json')
-    ..putIfAbsent('Authorization', () => 'Token token=${params.apiKey}');
+  final headers = Map<String, String>()..putIfAbsent('Content-type', () => 'application/json')..putIfAbsent('Authorization', () => 'Token token=${params.apiKey}');
   final url = '$baseUrl$language.json';
   final response = await http.get(url, headers: headers);
   if (response.statusCode != 200) {
-    throw Exception(
-        '\n\nFailed to get $url with statuscode ${response.statusCode}\n');
+    throw Exception('\n\nFailed to get $url with statuscode ${response.statusCode}\n');
   }
-  final file = File(join(Directory.current.path, assetsDir, '$language.json'));
+  final file = File(join(Directory.current.path, localeAssetsDir, '$language.json'));
   const encoder = JsonEncoder.withIndent('  ');
   final changedBody = response.body.replaceAll(r'\\n', r'\n');
   final body = json.decode(changedBody);
@@ -73,11 +72,9 @@ Future<void> _buildJson(String language) async {
 
 void createLocalizationKeysFile() {
   final sb = StringBuffer()
-    ..writeln(
-        '//============================================================//')
+    ..writeln('//============================================================//')
     ..writeln('//THIS FILE IS AUTO GENERATED. DO NOT EDIT//')
-    ..writeln(
-        '//============================================================//')
+    ..writeln('//============================================================//')
     ..writeln('class LocalizationKeys {')
     ..writeln();
   defaultTranslations.forEach((key, value) {
@@ -87,8 +84,7 @@ void createLocalizationKeysFile() {
   sb.writeln('}');
 
   // Write to file
-  final localizationKeysFile =
-      File(join(Directory.current.path, outputDir, 'localization_keys.dart'));
+  final localizationKeysFile = File(join(Directory.current.path, outputDir, 'localization_keys.dart'));
   if (!localizationKeysFile.existsSync()) {
     print('localization_keys.dart does not exists');
     print('Creating localization_keys.dart ...');
@@ -103,19 +99,15 @@ void createLocalizationFile() {
     ..writeln()
     ..writeln("import 'package:flutter/services.dart';")
     ..writeln("import 'package:flutter/widgets.dart';")
-    ..writeln(
-        "import 'package:${params.projectName}/util/locale/localization_keys.dart';")
+    ..writeln("import 'package:${params.projectName}/util/locale/localization_keys.dart';")
     ..writeln()
-    ..writeln(
-        '//============================================================//')
+    ..writeln('//============================================================//')
     ..writeln('//THIS FILE IS AUTO GENERATED. DO NOT EDIT//')
-    ..writeln(
-        '//============================================================//')
+    ..writeln('//============================================================//')
     ..writeln('class Localization {')
     ..writeln('  Map<dynamic, dynamic> _localisedValues = Map();')
     ..writeln()
-    ..writeln(
-        '  static Localization of(BuildContext context) => Localizations.of<Localization>(context, Localization);')
+    ..writeln('  static Localization of(BuildContext context) => Localizations.of<Localization>(context, Localization);')
     ..writeln()
     ..writeln(
         '  static Future<Localization> load(Locale locale, {bool showLocalizationKeys = false}) async {')
@@ -123,10 +115,8 @@ void createLocalizationFile() {
     ..writeln('    if (showLocalizationKeys) {')
     ..writeln('      return localizations;')
     ..writeln('    }')
-    ..writeln(
-        "    final jsonContent = await rootBundle.loadString('assets/locale/\${locale.languageCode}.json');")
-    ..writeln(
-        '    final Map<String, dynamic> values = json.decode(jsonContent);')
+    ..writeln("    final jsonContent = await rootBundle.loadString('$assetsDir\${locale.languageCode}.json');")
+    ..writeln('    final Map<String, dynamic> values = json.decode(jsonContent);')
     ..writeln('    localizations._localisedValues = values;')
     ..writeln('    return localizations;')
     ..writeln('  }')
@@ -136,8 +126,7 @@ void createLocalizationFile() {
     ..writeln('      String value = _localisedValues[key];')
     ..writeln("      if (value == null) return '\$key';")
     ..writeln('      if (args == null || args.isEmpty) return value;')
-    ..writeln(
-        '      args.asMap().forEach((index, arg) => value = _replaceWith(value, arg, index + 1));')
+    ..writeln('      args.asMap().forEach((index, arg) => value = _replaceWith(value, arg, index + 1));')
     ..writeln('      return value;')
     ..writeln('    } catch (e) {')
     ..writeln("      return '⚠\$key⚠';")
@@ -154,17 +143,11 @@ void createLocalizationFile() {
     ..writeln('    return value;')
     ..writeln('  }')
     ..writeln();
-  defaultTranslations.forEach(
-      (key, value) => FileWriter.buildTranslationFunction(sb, key, value));
-  sb
-    ..writeln(
-        '  String getTranslation(String key, {List<dynamic> args}) => _t(key, args: args ?? List());')
-    ..writeln()
-    ..writeln('}');
+  defaultTranslations.forEach((key, value) => FileWriter.buildTranslationFunction(sb, key, value));
+  sb..writeln('  String getTranslation(String key, {List<dynamic> args}) => _t(key, args: args ?? List());')..writeln()..writeln('}');
 
   // Write to file
-  final localizationFile =
-      File(join(Directory.current.path, outputDir, 'localization.dart'));
+  final localizationFile = File(join(Directory.current.path, outputDir, 'localization.dart'));
   if (!localizationFile.existsSync()) {
     print('localization.dart does not exists');
     print('Creating localization.dart ...');
@@ -178,26 +161,17 @@ void createLocalizationDelegateFile() {
     ..writeln("import 'dart:async';")
     ..writeln()
     ..writeln("import 'package:flutter/material.dart';")
-    ..writeln(
-        "import 'package:${params.projectName}/util/locale/localization.dart';")
+    ..writeln("import 'package:${params.projectName}/util/locale/localization.dart';")
     ..writeln()
-    ..writeln(
-        '//============================================================//')
+    ..writeln('//============================================================//')
     ..writeln('//THIS FILE IS AUTO GENERATED. DO NOT EDIT//')
-    ..writeln(
-        '//============================================================//')
-    ..writeln(
-        'class LocalizationDelegate extends LocalizationsDelegate<Localization> {')
-    ..writeln(
-        "  static const defaultLocale = Locale('${params.defaultLanguage}');")
+    ..writeln('//============================================================//')
+    ..writeln('class LocalizationDelegate extends LocalizationsDelegate<Localization> {')
+    ..writeln("  static const defaultLocale = Locale('${params.defaultLanguage}');")
     ..writeln('  static const supportedLanguages = [');
   params.languages.forEach((language) => sb.writeln("    '$language',"));
-  sb
-    ..writeln('  ];')
-    ..writeln()
-    ..writeln('  static const supportedLocales = [');
-  params.languages
-      .forEach((language) => sb.writeln("    Locale('$language'),"));
+  sb..writeln('  ];')..writeln()..writeln('  static const supportedLocales = [');
+  params.languages.forEach((language) => sb.writeln("    Locale('$language'),"));
   sb
     ..writeln('  ];')
     ..writeln()
@@ -214,8 +188,7 @@ void createLocalizationDelegateFile() {
     ..writeln('  }')
     ..writeln()
     ..writeln('  @override')
-    ..writeln(
-        '  bool isSupported(Locale locale) => supportedLanguages.contains(locale.languageCode);')
+    ..writeln('  bool isSupported(Locale locale) => supportedLanguages.contains(locale.languageCode);')
     ..writeln()
     ..writeln('  @override')
     ..writeln('  Future<Localization> load(Locale locale) async {')
@@ -224,14 +197,12 @@ void createLocalizationDelegateFile() {
     ..writeln('  }')
     ..writeln()
     ..writeln('  @override')
-    ..writeln(
-        '  bool shouldReload(LocalizationsDelegate<Localization> old) => true;')
+    ..writeln('  bool shouldReload(LocalizationsDelegate<Localization> old) => true;')
     ..writeln()
     ..writeln('}');
 
   // Write to file
-  final localizationDelegateFile = File(
-      join(Directory.current.path, outputDir, 'localization_delegate.dart'));
+  final localizationDelegateFile = File(join(Directory.current.path, outputDir, 'localization_delegate.dart'));
   if (!localizationDelegateFile.existsSync()) {
     print('localization_delegate.dart does not exists');
     print('Creating localization_delegate.dart ...');

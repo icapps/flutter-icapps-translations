@@ -29,9 +29,11 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/locale/
+    - assets/localization/
 
 icapps_translations:
   api_key: 'enter-your-api-key'
   default_language: 'nl'
   languages: ['en', 'nl']
+  locale_assets_path: 'assets/localization'
+  assets_path: 'assets/localization'

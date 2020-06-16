@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.0] - 2020-06-16
+### Added
+-Support for a multi module architecture 
+ 
 ## [2.0.0] - 2020-02-10
 ### Breaking
 -isInTest => showLocalizationKeys

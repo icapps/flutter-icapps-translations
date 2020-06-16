@@ -42,6 +42,8 @@ icapps_translations:
   api_key: 'enter-your-api-key'
   default_language: 'nl'
   languages: ['en', 'nl']
+  locale_assets_path: 'assets/locale/' //This is the location where your json files should be saved.
+  assets_path: 'assets/locale/' //This is the location where your json files are located in your flutter app.
 ```
 
 set an env variable for your api_key
