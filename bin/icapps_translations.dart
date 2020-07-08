@@ -139,7 +139,7 @@ void createLocalizationFile() {
     ..writeln('  String _t(String key, {List<dynamic> args}) {')
     ..writeln('    try {')
     ..writeln('      // ignore: avoid_as')
-    ..writeln('      String value = _localisedValues[key] as String;')
+    ..writeln('      var value = _localisedValues[key] as String;')
     ..writeln("      if (value == null) return '\$key';")
     ..writeln('      if (args == null || args.isEmpty) return value;')
     ..writeln(
