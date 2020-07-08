@@ -117,7 +117,7 @@ void createLocalizationFile() {
     ..writeln(
         '//============================================================//')
     ..writeln('class Localization {')
-    ..writeln('  Map<String, String> _localisedValues = Map();')
+    ..writeln('  Map<String, dynamic> _localisedValues = Map();')
     ..writeln()
     ..writeln(
         '  static Localization of(BuildContext context) => Localizations.of<Localization>(context, Localization);')
@@ -132,13 +132,14 @@ void createLocalizationFile() {
         "    final jsonContent = await rootBundle.loadString('$assetsDir\${locale.languageCode}.json');")
     ..writeln(
         '    // ignore: avoid_as')
-    ..writeln('    localizations._localisedValues = json.decode(jsonContent) as Map<String,String>;')
+    ..writeln('    localizations._localisedValues = json.decode(jsonContent) as Map<String,dynamic>;')
     ..writeln('    return localizations;')
     ..writeln('  }')
     ..writeln()
     ..writeln('  String _t(String key, {List<dynamic> args}) {')
     ..writeln('    try {')
-    ..writeln('      var value = _localisedValues[key];')
+    ..writeln('      // ignore: avoid_as')
+    ..writeln('      String value = _localisedValues[key] as String;')
     ..writeln("      if (value == null) return '\$key';")
     ..writeln('      if (args == null || args.isEmpty) return value;')
     ..writeln(
