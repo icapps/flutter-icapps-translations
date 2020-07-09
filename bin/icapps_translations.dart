@@ -132,7 +132,7 @@ void createLocalizationFile() {
         "    final jsonContent = await rootBundle.loadString('$assetsDir\${locale.languageCode}.json');")
     ..writeln(
         '    // ignore: avoid_as')
-    ..writeln('    localizations._localisedValues = json.decode(jsonContent) as Map<String,dynamic>;')
+    ..writeln('    localizations._localisedValues = json.decode(jsonContent) as Map<String, dynamic>;')
     ..writeln('    return localizations;')
     ..writeln('  }')
     ..writeln()
