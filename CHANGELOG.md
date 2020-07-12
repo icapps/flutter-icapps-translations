@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.2.0] - 2020-06-16
+### Added
+-Support for strict mode 
+
 ## [2.1.0] - 2020-06-16
 ### Added
 -Support for a multi module architecture 
