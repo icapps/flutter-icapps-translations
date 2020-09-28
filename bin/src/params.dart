@@ -35,13 +35,6 @@ class Params {
       apiKey = envVars[ENV_API_KEY];
     }
 
-    if (apiKey == null || apiKey.isEmpty) {
-      throw Exception(
-          'A api_key should be added to the icapps_translations section in the pubspec.yaml\n'
-          '$icappsTranslationsYaml'
-          "  api_key: 'your-api-key'");
-    }
-
     final YamlList yamlList = config['languages'];
     if (yamlList == null || yamlList.isEmpty) {
       throw Exception(

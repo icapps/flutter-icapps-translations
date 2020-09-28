@@ -37,8 +37,20 @@ Future<void> main(List<String> args) async {
     localeFolder.createSync(recursive: true);
   }
 
-  await Future.wait(
-      params.languages.map((language) async => _buildJson(language)).toList());
+  final useLocaleFiles = params.apiKey == null || params.apiKey.isEmpty;
+
+  if (useLocaleFiles) {
+    final path = join(Directory.current.path, localeAssetsDir, '${params.defaultLanguage}.json');
+    final file = File(path);
+
+    await file.readAsString()
+        .then((fileContents) => json.decode(fileContents))
+        .then((translations) {
+          defaultTranslations = translations;
+        });
+  } else {
+    await Future.wait(params.languages.map((language) async => _buildJson(language, useLocaleFiles)).toList());
+  }
 
   createLocalizationKeysFile();
   createLocalizationFile();
@@ -53,27 +65,29 @@ Future<void> parsePubspec(File pubspecYaml) async {
   print('Supported languages: ${params.languages}');
 }
 
-Future<void> _buildJson(String language) async {
-  print('Updating $language...');
-  final headers = Map<String, String>()
-    ..putIfAbsent('Content-type', () => 'application/json')
-    ..putIfAbsent('Authorization', () => 'Token token=${params.apiKey}');
-  final url = '$baseUrl$language.json';
-  final response = await http.get(url, headers: headers);
-  if (response.statusCode != 200) {
-    throw Exception(
-        '\n\nFailed to get $url with statuscode ${response.statusCode}\n');
-  }
-  final file =
-      File(join(Directory.current.path, localeAssetsDir, '$language.json'));
-  const encoder = JsonEncoder.withIndent('  ');
-  final changedBody = response.body.replaceAll(r'\\n', r'\n');
-  final body = json.decode(changedBody);
-  final translations = body['translations'] ?? Map<String, dynamic>();
-  file.writeAsStringSync(encoder.convert(translations));
-  if (language == params.defaultLanguage) {
-    defaultTranslations = translations;
-  }
+Future<void> _buildJson(String language, bool useLocaleFiles) async {
+    print('Updating $language...');
+    final headers = Map<String, String>()
+      ..putIfAbsent('Content-type', () => 'application/json')
+      ..putIfAbsent('Authorization', () => 'Token token=${params.apiKey}');
+    final url = '$baseUrl$language.json';
+    final response = await http.get(url, headers: headers);
+    if (response.statusCode != 200) {
+      throw Exception(
+          '\n\nFailed to get $url with statuscode ${response.statusCode}\n');
+    }
+
+    const encoder = JsonEncoder.withIndent('  ');
+    final changedBody = response.body.replaceAll(r'\\n', r'\n');
+    final body = json.decode(changedBody);
+    final translations = body['translations'] ?? Map<String, dynamic>();
+
+    final path = join(Directory.current.path, localeAssetsDir, '$language.json');
+    final file = File(path);
+    file.writeAsStringSync(encoder.convert(translations));
+    if (language == params.defaultLanguage) {
+      defaultTranslations = translations;
+    }
 }
 
 void createLocalizationKeysFile() {
