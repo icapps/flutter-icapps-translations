@@ -17,18 +17,24 @@ class HomeScreen extends StatelessWidget {
           children: [
             FlatButton(
               child: const Text('System Language (Not translated)'),
-              onPressed: Provider.of<LocaleViewModel>(context).onSwitchToSystemLanguage,
+              onPressed: Provider.of<LocaleViewModel>(context)
+                  .onSwitchToSystemLanguage,
             ),
             FlatButton(
               child: const Text('English (Not translated)'),
-              onPressed: Provider.of<LocaleViewModel>(context).onSwitchToEnglish,
+              onPressed:
+                  Provider.of<LocaleViewModel>(context).onSwitchToEnglish,
             ),
             FlatButton(
               child: const Text('Nederlands (Not translated)'),
               onPressed: Provider.of<LocaleViewModel>(context).onSwitchToDutch,
             ),
             Container(height: 32),
-            Text(Localization.of(context).welcomeMessage)
+            Text(Localization.of(context).test),
+            Text(Localization.of(context).testArg1('string')),
+            Text(Localization.of(context).testArg2(1.0)),
+            Text(Localization.of(context).testArg3('string', 1.0)),
+            Text(Localization.of(context).testArg4('string', 1.0)),
           ],
         ),
       ),
