@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.4] - 2020-10-03
+### Fixed
+-Version locale_gen
+
 ## [3.0.3] - 2020-10-03
 ### Fixed
 -Version bump packages
