@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.3] - 2020-10-03
+### Fixed
+-Version bump packages
+
 ## [3.0.2] - 2020-10-03
 ### Fixed
 -Android embedding v2
