@@ -1,17 +1,8 @@
 # flutter icapps translations
 
-A dart package to automaticly download translations from the icapps translation tool.
+A dart package to automaticly download translations from the icapps translation tool. The rest of the implementation is done by locale_gen https://pub.dev/packages/locale_gen
 
 [![pub package](https://img.shields.io/pub/v/icapps_translations.svg)](https://pub.dartlang.org/packages/icapps_translations)
-
-This repo contains an example how to use this package.
-
-Packages used:
- - flutter_localizations
- - shared_preferences
- - provider
- - kiwi
- - icapps_translations
 
 ## Example
 
@@ -98,3 +89,13 @@ now you can use the icapps translations with a single command.
 ```
 fluttertranslations
 ```
+
+## Example
+This repo contains an example how to use this package.
+
+Packages used:
+ - flutter_localizations
+ - shared_preferences
+ - provider
+ - kiwi
+ - icapps_translations
