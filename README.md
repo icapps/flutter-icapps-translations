@@ -3,6 +3,7 @@
 A dart package to automaticly download translations from the icapps translation tool. The rest of the implementation is done by locale_gen https://pub.dev/packages/locale_gen
 
 [![pub package](https://img.shields.io/pub/v/icapps_translations.svg)](https://pub.dartlang.org/packages/icapps_translations)
+[![Build Status](https://travis-ci.com/icapps/flutter-icapps-translations.svg?branch=master)](https://travis-ci.com/icapps/flutter-icapps-translations)
 
 ## Example
 
