@@ -30,15 +30,16 @@ class LocalizationDelegate extends LocalizationsDelegate<Localization> {
   }
 
   @override
-  bool isSupported(Locale locale) => supportedLanguages.contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      supportedLanguages.contains(locale.languageCode);
 
   @override
   Future<Localization> load(Locale locale) async {
     activeLocale = newLocale ?? locale;
-    return Localization.load(activeLocale, showLocalizationKeys: showLocalizationKeys);
+    return Localization.load(activeLocale,
+        showLocalizationKeys: showLocalizationKeys);
   }
 
   @override
   bool shouldReload(LocalizationsDelegate<Localization> old) => true;
-
 }

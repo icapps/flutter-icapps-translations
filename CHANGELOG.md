@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.0] - 2020-06-16
+### REFACTOR
+-Full rewrite. Uses locale_gen as a base packge so the logic is only stored in locale_gen. (locale_gen is the offline alternative)
+ 
 ## [2.2.0] - 2020-06-16
 ### Added
 -Support for strict mode 
