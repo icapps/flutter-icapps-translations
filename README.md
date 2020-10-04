@@ -4,6 +4,8 @@ A dart package to automaticly download translations from the icapps translation 
 
 [![pub package](https://img.shields.io/pub/v/icapps_translations.svg)](https://pub.dartlang.org/packages/icapps_translations)
 [![Build Status](https://travis-ci.com/icapps/flutter-icapps-translations.svg?branch=master)](https://travis-ci.com/icapps/flutter-icapps-translations)
+[![Coverage Status](https://coveralls.io/repos/github/icapps/flutter-icapps-translations/badge.svg)](https://coveralls.io/github/icapps/flutter-icapps-translations)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ## Example
 
