@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.1.0] - 2021-02-09
+### Added
+- Option to generate null safety compatible code
+
 ## [3.0.5] - 2020-10-06
 ### Fixed
 -#24: error when using locale_asset_path in combination with the icapps_translations package (fixed in locale_gen)
