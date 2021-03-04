@@ -3,8 +3,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:icapps_translations_example/screen/home_screen.dart';
 import 'package:icapps_translations_example/util/locale/localization_delegate.dart';
 import 'package:icapps_translations_example/viewmodel/locale/locale_viewmodel.dart';
-import 'package:kiwi/kiwi.dart' as kiwi;
 import 'package:provider/provider.dart';
+
+import 'repository/locale_repository.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           home: HomeScreen(),
         ),
       ),
-      create: (context) => kiwi.Container().resolve()..init(),
+      create: (_) => LocaleViewModel(LocaleRepository())..init(),
     );
   }
 }

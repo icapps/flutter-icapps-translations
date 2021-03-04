@@ -18,7 +18,7 @@ class LocalizationDelegate extends LocalizationsDelegate<Localization> {
     Locale('nl'),
   ];
 
-  Locale newLocale;
+  Locale? newLocale;
   Locale activeLocale;
   bool showLocalizationKeys;
 
