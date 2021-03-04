@@ -1,5 +1,5 @@
 # Changelog
-## [3.2.0] - 2021-03-04
+## [4.0.0] - 2021-03-04
 ### Added
 - Option to generate null safety compatible code & support for Flutter 2.0 & dart 2.12
 ### Removed
