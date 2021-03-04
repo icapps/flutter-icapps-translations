@@ -6,7 +6,9 @@ class LocaleRepository {
 
   static LocaleRepository? _instance;
 
-  factory LocaleRepository() => _instance ??= LocaleRepository();
+  LocaleRepository._();
+
+  factory LocaleRepository() => _instance ??= LocaleRepository._();
 
   Future<void> setCustomLocale(Locale? locale) async {
     final prefs = await SharedPreferences.getInstance();

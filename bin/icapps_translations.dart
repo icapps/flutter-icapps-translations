@@ -12,9 +12,13 @@ const programName = 'icapps_translations';
 Future<void> main(List<String> args) async {
   final params = Params(programName);
 
-  await Future.wait(params.languages.map((language) async => IcappsTranslationDownloader.fetchJson(params, language)).toList());
+  await Future.wait(params.languages
+      .map((language) async =>
+          IcappsTranslationDownloader.fetchJson(params, language))
+      .toList());
 
-  final localeFolder = Directory(join(Directory.current.path, params.localeAssetsDir));
+  final localeFolder =
+      Directory(join(Directory.current.path, params.localeAssetsDir));
   if (!localeFolder.existsSync()) {
     print('${params.localeAssetsDir} folder does not yet exist.');
     print('Creating folder...');
