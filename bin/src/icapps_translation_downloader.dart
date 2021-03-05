@@ -18,7 +18,7 @@ class IcappsTranslationDownloader {
       ..putIfAbsent('Authorization', () => 'Token token=${params.apiKey}');
     final url = '$_baseUrl$language.json';
     try {
-      final response = await http.get(url, headers: headers);
+      final response = await http.get(Uri.parse(url), headers: headers);
       if (response.statusCode != 200) {
         throw Exception(
             '\n\nFailed to get $url with status code ${response.statusCode}\n');

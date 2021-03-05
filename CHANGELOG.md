@@ -1,4 +1,9 @@
 # Changelog
+## [4.0.0] - 2021-03-04
+### Added
+- Option to generate null safety compatible code & support for Flutter 2.0 & dart 2.12
+### Removed
+- Updated to locale_gen 3.0.0 -> nullsafe flag is removed. nullsafe is used by default
 
 ## [3.1.0] - 2021-02-09
 ### Added
