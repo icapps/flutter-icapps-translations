@@ -1,4 +1,9 @@
 # Changelog
+## [4.1.0] - 2021-03-26
+### Added
+-#30 Support for skipping a locale at runtime. example: only use dutch in alpha but not in beta & production (locale_gen)
+- Version bump dependencies
+
 ## [4.0.0] - 2021-03-04
 ### Added
 - Option to generate null safety compatible code & support for Flutter 2.0 & dart 2.12
