@@ -1,4 +1,8 @@
 # Changelog
+## [4.2.0] - 2021-03-30
+### Added
+- Version bump to locale_gen 3.2.0
+
 ## [4.1.0] - 2021-03-26
 ### Added
 -#30 Support for skipping a locale at runtime. example: only use dutch in alpha but not in beta & production (locale_gen)
