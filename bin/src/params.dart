@@ -1,13 +1,26 @@
 import 'dart:io';
 
 import 'package:locale_gen/locale_gen.dart';
+import 'package:path/path.dart';
 
 class Params extends LocaleGenParams {
   static const ENV_API_KEY = 'API_KEY_ICAPPS_TRANSLATIONS';
 
   String? apiKey;
 
-  Params(String programName) : super(programName);
+  factory Params(String programName) {
+    final pubspecYaml = File(join(Directory.current.path, 'pubspec.yaml'));
+    if (!pubspecYaml.existsSync()) {
+      throw Exception(
+          'This program should be run from the root of a flutter/dart project');
+    }
+
+    final pubspecContent = pubspecYaml.readAsStringSync();
+    return Params.fromYamlString(programName, pubspecContent);
+  }
+
+  Params.fromYamlString(String programName, String pubspecContent)
+      : super.fromYamlString(programName, pubspecContent);
 
   @override
   void configure(config) {
