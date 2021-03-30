@@ -19,7 +19,8 @@ class Params extends LocaleGenParams {
     return Params.fromYamlString(programName, pubspecContent);
   }
 
-  Params.fromYamlString(String programName, String pubspecContent): super.fromYamlString(programName, pubspecContent);
+  Params.fromYamlString(String programName, String pubspecContent)
+      : super.fromYamlString(programName, pubspecContent);
 
   @override
   void configure(config) {
