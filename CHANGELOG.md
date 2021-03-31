@@ -1,4 +1,8 @@
 # Changelog
+## [4.2.1] - 2021-03-31
+### Fixed
+- Version bump to locale_gen 3.2.1
+
 ## [4.2.0] - 2021-03-30
 ### Added
 - Version bump to locale_gen 3.2.0
