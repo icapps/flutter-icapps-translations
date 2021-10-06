@@ -3,6 +3,10 @@
 ### Updated
 - Version bump to locale_gen [3.4.1](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v3.4.1)
 
+## [4.5.0] - 2021-10-06
+### Updated
+- Version bump to locale_gen [3.4.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v3.5.0)
+
 ## [4.4.0] - 2021-05-06
 ### Updated
 - Version bump to locale_gen [3.4.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v3.4.0)
