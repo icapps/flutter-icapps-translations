@@ -10,22 +10,23 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('icapps translations'),
         backgroundColor: Colors.black45,
+        brightness: Brightness.dark,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
+            MaterialButton(
               child: const Text('System Language (Not translated)'),
               onPressed: Provider.of<LocaleViewModel>(context)
                   .onSwitchToSystemLanguage,
             ),
-            TextButton(
+            MaterialButton(
               child: const Text('English (Not translated)'),
               onPressed:
                   Provider.of<LocaleViewModel>(context).onSwitchToEnglish,
             ),
-            TextButton(
+            MaterialButton(
               child: const Text('Nederlands (Not translated)'),
               onPressed: Provider.of<LocaleViewModel>(context).onSwitchToDutch,
             ),
