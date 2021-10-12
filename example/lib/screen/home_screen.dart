@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
               child: const Text('Nederlands (Not translated)'),
               onPressed: Provider.of<LocaleViewModel>(context).onSwitchToDutch,
             ),
-            Container(height: 32),
+            const SizedBox(height: 32),
             Text(Localization.of(context).test),
             Text(Localization.of(context).testArg1('string')),
             Text(Localization.of(context).testArg2(1.0)),
