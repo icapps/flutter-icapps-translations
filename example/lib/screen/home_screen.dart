@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:icapps_translations_example/util/locale/localization.dart';
 import 'package:icapps_translations_example/viewmodel/locale/locale_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +11,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('icapps translations'),
         backgroundColor: Colors.black45,
-        brightness: Brightness.dark,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: Center(
         child: Column(
