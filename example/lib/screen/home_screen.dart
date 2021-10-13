@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:icapps_translations_example/util/locale/localization.dart';
 import 'package:icapps_translations_example/viewmodel/locale/locale_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -10,26 +11,27 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('icapps translations'),
         backgroundColor: Colors.black45,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
+            MaterialButton(
               child: const Text('System Language (Not translated)'),
               onPressed: Provider.of<LocaleViewModel>(context)
                   .onSwitchToSystemLanguage,
             ),
-            TextButton(
+            MaterialButton(
               child: const Text('English (Not translated)'),
               onPressed:
                   Provider.of<LocaleViewModel>(context).onSwitchToEnglish,
             ),
-            TextButton(
+            MaterialButton(
               child: const Text('Nederlands (Not translated)'),
               onPressed: Provider.of<LocaleViewModel>(context).onSwitchToDutch,
             ),
-            Container(height: 32),
+            const SizedBox(height: 32),
             Text(Localization.of(context).test),
             Text(Localization.of(context).testArg1('string')),
             Text(Localization.of(context).testArg2(1.0)),

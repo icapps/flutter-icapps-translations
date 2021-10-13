@@ -1,11 +1,16 @@
 # Changelog
-## [4.4.1] - 2021-05-07
+## [4.6.0] - 2021-10-12
 ### Updated
-- Version bump to locale_gen [3.4.1](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v3.4.1)
+- Version bump to locale_gen [3.6.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v3.6.0)
+  (Update translations at runtime is now available)
 
 ## [4.5.0] - 2021-10-06
 ### Updated
 - Version bump to locale_gen [3.5.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v3.5.0)
+
+## [4.4.1] - 2021-05-07
+### Updated
+- Version bump to locale_gen [3.4.1](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v3.4.1)
 
 ## [4.4.0] - 2021-05-06
 ### Updated
