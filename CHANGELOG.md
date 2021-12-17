@@ -1,5 +1,9 @@
 # Changelog
-## [5.1.0] - 2021-11-12
+## [5.1.1] - 2021-12-17
+### Updated
+- Version bump to locale_gen [4.1.1](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v4.1.1)
+
+## [5.1.0] - 2021-12-16
 ### Updated
 - Version bump to locale_gen [4.1.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v4.1.0)
 
