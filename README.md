@@ -33,18 +33,20 @@ flutter:
 Add the icapps_translations config to fetch the latest translations
 ```yaml
 icapps_translations:
-  api_key: 'enter-your-api-key'
+  api_key: 'enter-your-api-key' #For the new translations tool, this is the bearer token
   default_language: 'nl'
   languages: ['en', 'nl']
   locale_assets_path: 'assets/locale/' #This is the location where your json files should be saved.
   assets_path: 'assets/locale/' #This is the location where your json files are located in your flutter app.
   nullsafety: true #Generate nullsafety compatible code. Defaults to false
+  project_id: 'optional project id' #To use the new translations tool, enter the project id here
 ```
 
-set an env variable for your api_key
+alternatively set an env variable for your api_key and/or project_id
 
 ```shell
 API_KEY_ICAPPS_TRANSLATIONS
+PROJECT_ID_ICAPPS_TRANSLATIONS
 ```
 
 ### Run package with Flutter

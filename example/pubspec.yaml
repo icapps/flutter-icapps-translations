@@ -31,3 +31,4 @@ icapps_translations:
   languages: ['en', 'nl']
   locale_assets_path: 'assets/localization'
   assets_path: 'assets/localization'
+  #project_id: To use the new translations tool, specify the project id here

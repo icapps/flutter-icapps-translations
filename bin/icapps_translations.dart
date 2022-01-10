@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:locale_gen/locale_gen.dart';
 import 'package:path/path.dart';
 
-import 'src/icapps_translation_downloader.dart';
+import 'src/icapps_translations_downloader.dart';
 import 'src/params.dart';
 
 const programName = 'icapps_translations';
@@ -12,9 +12,10 @@ const programName = 'icapps_translations';
 Future<void> main(List<String> args) async {
   final params = Params(programName);
 
+  final downloader = IcappsTranslationDownloader.create(params);
+
   await Future.wait(params.languages
-      .map((language) async =>
-          IcappsTranslationDownloader.fetchJson(params, language))
+      .map((language) async => downloader.fetchTranslations(language))
       .toList());
 
   final localeFolder =
