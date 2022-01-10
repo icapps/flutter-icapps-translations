@@ -4,9 +4,16 @@ import 'package:locale_gen/locale_gen.dart';
 import 'package:path/path.dart';
 
 class Params extends LocaleGenParams {
-  static const ENV_API_KEY = 'API_KEY_ICAPPS_TRANSLATIONS';
+  static const envApiKey = 'API_KEY_ICAPPS_TRANSLATIONS';
+  static const envProjectId = 'PROJECT_ID_ICAPPS_TRANSLATIONS';
 
-  String? apiKey;
+  String? _apiKey;
+  String? _projectId;
+
+  String get apiKey => _apiKey!;
+  String get projectId => _projectId!;
+
+  bool get useNew => _projectId != null;
 
   factory Params(String programName) {
     final pubspecYaml = File(join(Directory.current.path, 'pubspec.yaml'));
@@ -25,14 +32,17 @@ class Params extends LocaleGenParams {
   @override
   void configure(config) {
     super.configure(config);
-    apiKey = config['api_key'];
+    _apiKey = config['api_key'] as String?;
+    _projectId = config['project_id'] as String?;
 
-    if (apiKey == null || apiKey?.isEmpty == true) {
-      final envVars = Platform.environment;
-      apiKey = envVars[ENV_API_KEY];
+    if (_apiKey == null || _apiKey?.isEmpty == true) {
+      _apiKey = Platform.environment[envApiKey];
+    }
+    if (_projectId == null || _projectId?.isEmpty == true) {
+      _projectId = Platform.environment[envProjectId];
     }
 
-    if (apiKey == null || apiKey?.isEmpty == true) {
+    if (_apiKey == null || _apiKey?.isEmpty == true) {
       throw Exception(
           'A api_key should be added to the $programName section in the pubspec.yaml\n'
           '$programName'
