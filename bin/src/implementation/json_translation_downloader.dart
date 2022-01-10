@@ -6,11 +6,11 @@ import 'package:path/path.dart';
 import '../icapps_translations_downloader.dart';
 import '../params.dart';
 
-abstract class JSonTranslationDownloader
+abstract class JsonTranslationDownloader
     implements IcappsTranslationDownloader {
   final Params params;
 
-  const JSonTranslationDownloader(this.params);
+  const JsonTranslationDownloader(this.params);
 
   Future<String> downloadJson(String language);
 

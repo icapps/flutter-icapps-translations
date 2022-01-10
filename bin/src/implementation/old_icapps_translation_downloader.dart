@@ -5,7 +5,7 @@ import 'json_translation_downloader.dart';
 
 const _baseUrl = 'https://translations.icapps.com/api/translations/';
 
-class OldIcappsTranslationDownloader extends JSonTranslationDownloader {
+class OldIcappsTranslationDownloader extends JsonTranslationDownloader {
   const OldIcappsTranslationDownloader(Params params) : super(params);
 
   @override
