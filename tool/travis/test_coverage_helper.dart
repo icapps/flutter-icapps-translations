@@ -15,8 +15,8 @@ void main() {
     if (element.path.endsWith('generated_plugin_registrant.dart')) return false;
     return true;
   }).map((element) {
-    final importPath = element.path.replaceFirst('bin', packageName);
-    return 'import "package:$importPath";';
+    final importPath = element.path.replaceFirst('bin', '../bin');
+    return 'import "$importPath";';
   });
   final testFile = File('test/coverage_helper_test.dart');
   if (!testFile.existsSync()) {

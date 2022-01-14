@@ -108,6 +108,7 @@ example/ios/Podfile.lock
 
 # Coverage
 coverage/
+test/coverage_helper_test.dart
 
 # Symbols
 app.*.symbols
@@ -122,3 +123,4 @@ app.*.symbols
 
 #FVM
 **/.fvm/flutter_sdk
+
