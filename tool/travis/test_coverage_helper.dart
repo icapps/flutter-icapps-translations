@@ -8,14 +8,14 @@ void main() {
       'First create a file with all other files imported so flutter test coverage uses all files');
   Logger.debug('====');
 
-  final imports = Directory('lib').listSync(recursive: true).where((element) {
+  final imports = Directory('bin').listSync(recursive: true).where((element) {
     if (Directory(element.path).existsSync()) return false;
     if (element.path.endsWith('.g.dart')) return false;
     if (element.path.endsWith('_web.dart')) return false;
     if (element.path.endsWith('generated_plugin_registrant.dart')) return false;
     return true;
   }).map((element) {
-    final importPath = element.path.replaceFirst('lib', packageName);
+    final importPath = element.path.replaceFirst('bin', packageName);
     return 'import "package:$importPath";';
   });
   final testFile = File('test/coverage_helper_test.dart');
