@@ -3,8 +3,8 @@
 A dart package to automaticly download translations from the icapps translation tool. The rest of the implementation is done by locale_gen https://pub.dev/packages/locale_gen
 
 [![pub package](https://img.shields.io/pub/v/icapps_translations.svg)](https://pub.dartlang.org/packages/icapps_translations)
-[![Build Status](https://travis-ci.com/icapps/flutter-icapps-translations.svg?branch=master)](https://travis-ci.com/icapps/flutter-icapps-translations)
-[![Coverage Status](https://coveralls.io/repos/github/icapps/flutter-icapps-translations/badge.svg)](https://coveralls.io/github/icapps/flutter-icapps-translations)
+[![Build Status](https://app.travis-ci.com/icapps/flutter-icapps-translations.svg?branch=master)](https://app.travis-ci.com/icapps/flutter-icapps-translations)
+[![Coverage Status](https://coveralls.io/repos/github/icapps/flutter-icapps-translations/badge.svg?branch=master)](https://coveralls.io/github/icapps/flutter-icapps-translations?branch=master)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ## Example
