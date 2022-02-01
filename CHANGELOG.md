@@ -3,6 +3,15 @@
 ### Added
 - Adding project_id to the pubspec.yaml file will use the new translations tool
 
+## [5.2.1] - 2022-02-01
+### Updated
+- Version bump to locale_gen [4.1.2](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v4.1.2)
+
+## [5.2.0] - 2021-12-17
+### Updated
+- Added support for the new translation tool
+  project_id: 'project id' #To use the new translations tool, enter the project id here
+
 ## [5.1.1] - 2021-12-17
 ### Updated
 - Version bump to locale_gen [4.1.1](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v4.1.1)
