@@ -1,4 +1,8 @@
 # Changelog
+## [6.0.0] - 2022-02-01
+### Updated
+- Version bump to locale_gen [6.0.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v5.0.0)
+
 ## [5.2.0] - 2022-01-10
 ### Added
 - Adding project_id to the pubspec.yaml file will use the new translations tool
