@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:icapps_translations_example/repository/locale_repository.dart';
-import 'package:icapps_translations_example/util/locale/localization_delegate.dart';
+import 'package:icapps_translations_example/util/locale/localization.dart';
 
 class LocaleViewModel with ChangeNotifier {
   final LocaleRepository _localeRepository;
-  var localeDelegate = LocalizationDelegate();
 
   LocaleViewModel(this._localeRepository);
 
@@ -14,10 +13,8 @@ class LocaleViewModel with ChangeNotifier {
 
   Future<void> initLocale() async {
     final locale = await _localeRepository.getCustomLocale();
-    if (locale != null) {
-      localeDelegate = LocalizationDelegate(newLocale: locale);
-      notifyListeners();
-    }
+    await Localization.load(locale: locale);
+    notifyListeners();
   }
 
   Future<void> onSwitchToDutch() async {
@@ -34,7 +31,7 @@ class LocaleViewModel with ChangeNotifier {
 
   Future<void> _onUpdateLocaleClicked(Locale? locale) async {
     await _localeRepository.setCustomLocale(locale);
-    localeDelegate = LocalizationDelegate(newLocale: locale);
+    await Localization.load(locale: locale);
     notifyListeners();
   }
 }

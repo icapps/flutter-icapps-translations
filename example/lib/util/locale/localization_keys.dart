@@ -2,6 +2,7 @@
 //THIS FILE IS AUTO GENERATED. DO NOT EDIT//
 //============================================================//
 class LocalizationKeys {
+
   /// Translations:
   ///
   /// en:  **'Testing in English'**
@@ -39,6 +40,13 @@ class LocalizationKeys {
 
   /// Translations:
   ///
+  /// en:  **''**
+  ///
+  /// nl:  **'Hallo daar'**
+  static const welcomeMessage = 'welcome_message';
+
+  /// Translations:
+  ///
   /// en:  **'Testing\nargument\n\n[arg1 string] [arg2 number] [arg1 string]'**
   ///
   /// nl:  **'Test\nargument\n\n[arg1 string] [arg2 number] [arg1 string]'**
@@ -50,4 +58,5 @@ class LocalizationKeys {
   ///
   /// nl:  **'Carriage\r\nReturn'**
   static const testNewLineCarriageReturn = 'test_new_line_carriage_return';
+
 }
