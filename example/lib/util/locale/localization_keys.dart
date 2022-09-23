@@ -39,6 +39,13 @@ class LocalizationKeys {
 
   /// Translations:
   ///
+  /// en:  **''**
+  ///
+  /// nl:  **'Hallo daar'**
+  static const welcomeMessage = 'welcome_message';
+
+  /// Translations:
+  ///
   /// en:  **'Testing\nargument\n\n[arg1 string] [arg2 number] [arg1 string]'**
   ///
   /// nl:  **'Test\nargument\n\n[arg1 string] [arg2 number] [arg1 string]'**
