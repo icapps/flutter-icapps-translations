@@ -21,7 +21,8 @@ class Localization {
   /// It can later be used to check what the locale is that was used to load this Localization instance.
   static Locale? locale;
 
-  static const defaultLocale = Locale.fromSubtags(languageCode: 'nl', scriptCode: null, countryCode: null);
+  static const defaultLocale = Locale.fromSubtags(
+      languageCode: 'nl', scriptCode: null, countryCode: null);
 
   static const _supportedLocales = [
     Locale.fromSubtags(languageCode: 'nl', scriptCode: null, countryCode: null),
@@ -29,22 +30,27 @@ class Localization {
   ];
 
   static List<String> get supportedLanguages {
-    final supportedLanguageTags = _supportedLocales.map((e) => e.toLanguageTag()).toList(growable: false);
+    final supportedLanguageTags =
+        _supportedLocales.map((e) => e.toLanguageTag()).toList(growable: false);
     if (localeFilter == null) return supportedLanguageTags;
-    return supportedLanguageTags.where((element) => localeFilter?.call(element) ?? true).toList();
+    return supportedLanguageTags
+        .where((element) => localeFilter?.call(element) ?? true)
+        .toList();
   }
 
   static List<Locale> get supportedLocales {
     if (localeFilter == null) return _supportedLocales;
-    return _supportedLocales.where((element) => localeFilter?.call(element.toLanguageTag()) ?? true).toList();
+    return _supportedLocales
+        .where((element) => localeFilter?.call(element.toLanguageTag()) ?? true)
+        .toList();
   }
 
   static Future<void> load({
-    Locale? locale, 
+    Locale? locale,
     LocalizationOverrides? localizationOverrides,
     bool showLocalizationKeys = false,
     bool useCaching = true,
-    }) async {
+  }) async {
     final currentLocale = locale ?? defaultLocale;
     Localization.locale = currentLocale;
     if (showLocalizationKeys) {
@@ -53,21 +59,26 @@ class Localization {
       return;
     }
     if (localizationOverrides != null) {
-      final overrideLocalizations = await localizationOverrides.getOverriddenLocalizations(currentLocale);
+      final overrideLocalizations =
+          await localizationOverrides.getOverriddenLocalizations(currentLocale);
       _localisedOverrideValues = overrideLocalizations;
     }
-    final jsonContent = await rootBundle.loadString('assets/localization/${currentLocale.toLanguageTag()}.json', cache: useCaching);
+    final jsonContent = await rootBundle.loadString(
+        'assets/localization/${currentLocale.toLanguageTag()}.json',
+        cache: useCaching);
     _localisedValues = json.decode(jsonContent) as Map<String, dynamic>;
   }
 
   static String _t(String key, {List<dynamic>? args}) {
     try {
-      final value = (_localisedOverrideValues[key] ?? _localisedValues[key]) as String?;
+      final value =
+          (_localisedOverrideValues[key] ?? _localisedValues[key]) as String?;
       if (value == null) return key;
       if (args == null || args.isEmpty) return value;
       var newValue = value;
       // ignore: avoid_annotating_with_dynamic
-      args.asMap().forEach((index, dynamic arg) => newValue = _replaceWith(newValue, arg, index + 1));
+      args.asMap().forEach((index, dynamic arg) =>
+          newValue = _replaceWith(newValue, arg, index + 1));
       return newValue;
     } catch (e) {
       return '⚠$key⚠';
@@ -76,14 +87,15 @@ class Localization {
 
   static String _nonPositionalT(String key, {List<dynamic>? args}) {
     try {
-      final value = (_localisedOverrideValues[key] ?? _localisedValues[key]) as String?;
+      final value =
+          (_localisedOverrideValues[key] ?? _localisedValues[key]) as String?;
       if (value == null) return key;
       if (args == null || args.isEmpty) return value;
       var newValue = value;
       args.asMap().forEach(
             // ignore: avoid_annotating_with_dynamic
             (index, dynamic arg) => newValue = _replaceFirstWith(newValue, arg),
-      );
+          );
       return newValue;
     } catch (e) {
       return '⚠$key⚠';
@@ -122,28 +134,32 @@ class Localization {
   /// nl:  **'Test argument [arg1 string]'**
   ///
   /// en:  **'Testing argument [arg1 string]'**
-  static String testArg1(String arg1) => _t(LocalizationKeys.testArg1, args: <dynamic>[arg1]);
+  static String testArg1(String arg1) =>
+      _t(LocalizationKeys.testArg1, args: <dynamic>[arg1]);
 
   /// Translations:
   ///
   /// nl:  **'Test argument [arg1 number]'**
   ///
   /// en:  **'Testing argument [arg1 number]'**
-  static String testArg2(num arg1) => _t(LocalizationKeys.testArg2, args: <dynamic>[arg1]);
+  static String testArg2(num arg1) =>
+      _t(LocalizationKeys.testArg2, args: <dynamic>[arg1]);
 
   /// Translations:
   ///
   /// nl:  **'Test argument [arg1 string] [arg2 number]'**
   ///
   /// en:  **'Testing argument [arg1 string] [arg2 number]'**
-  static String testArg3(String arg1, num arg2) => _t(LocalizationKeys.testArg3, args: <dynamic>[arg1, arg2]);
+  static String testArg3(String arg1, num arg2) =>
+      _t(LocalizationKeys.testArg3, args: <dynamic>[arg1, arg2]);
 
   /// Translations:
   ///
   /// nl:  **'Test argument [arg1 string] [arg2 number] [arg1 string]'**
   ///
   /// en:  **'Testing argument [arg1 string] [arg2 number] [arg1 string]'**
-  static String testArg4(String arg1, num arg2) => _t(LocalizationKeys.testArg4, args: <dynamic>[arg1, arg2]);
+  static String testArg4(String arg1, num arg2) =>
+      _t(LocalizationKeys.testArg4, args: <dynamic>[arg1, arg2]);
 
   /// Translations:
   ///
@@ -157,17 +173,21 @@ class Localization {
   /// nl:  **'Test\nargument\n\n[arg1 string] [arg2 number] [arg1 string]'**
   ///
   /// en:  **'Testing\nargument\n\n[arg1 string] [arg2 number] [arg1 string]'**
-  static String testNewLine(String arg1, num arg2) => _t(LocalizationKeys.testNewLine, args: <dynamic>[arg1, arg2]);
+  static String testNewLine(String arg1, num arg2) =>
+      _t(LocalizationKeys.testNewLine, args: <dynamic>[arg1, arg2]);
 
   /// Translations:
   ///
   /// nl:  **'Carriage\r\nReturn'**
   ///
   /// en:  **'Carriage\r\nReturn'**
-  static String get testNewLineCarriageReturn => _t(LocalizationKeys.testNewLineCarriageReturn);
+  static String get testNewLineCarriageReturn =>
+      _t(LocalizationKeys.testNewLineCarriageReturn);
 
-  static String getTranslation(String key, {List<dynamic>? args}) => _t(key, args: args ?? <dynamic>[]);
+  static String getTranslation(String key, {List<dynamic>? args}) =>
+      _t(key, args: args ?? <dynamic>[]);
 
-  static String getTranslationNonPositional(String key, {List<dynamic>? args}) => _nonPositionalT(key, args: args ?? <dynamic>[]);
-
+  static String getTranslationNonPositional(String key,
+          {List<dynamic>? args}) =>
+      _nonPositionalT(key, args: args ?? <dynamic>[]);
 }
