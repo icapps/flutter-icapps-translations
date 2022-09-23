@@ -1,4 +1,8 @@
 # Changelog
+## [7.0.0] - 2022-09-23
+### Breaking
+- Removed the need of passing a context to get translations. Migration steps are described in the readme.
+
 ## [6.0.0] - 2022-02-01
 ### Updated
 - Version bump to locale_gen [6.0.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v5.0.0)
