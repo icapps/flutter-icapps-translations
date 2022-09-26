@@ -57,4 +57,18 @@ class LocalizationKeys {
   ///
   /// nl:  **'Carriage\r\nReturn'**
   static const testNewLineCarriageReturn = 'test_new_line_carriage_return';
+
+  /// Translations:
+  ///
+  /// en:  **'Testing non positional argument %s and %.02f'**
+  ///
+  /// nl:  **'Test niet positioneel argument %s en %f'**
+  static const testNonPositional = 'test_non_positional';
+
+  /// Translations:
+  ///
+  /// en:  **'{one: %d hour, other: %d hours}'**
+  ///
+  /// nl:  **'{one: %d uur, other: %d uren}'**
+  static const testPlural = 'test_plural';
 }

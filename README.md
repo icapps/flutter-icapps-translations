@@ -17,6 +17,9 @@ A dart package to automaticly download translations from the icapps translation 
 
 [![pub package](https://img.shields.io/pub/v/icapps_translations.svg)](https://pub.dartlang.org/packages/icapps_translations)
 ```yaml
+dependencies:
+  sprintf: ^6.0.2
+
 dev-dependencies:
   icapps_translations: <latest-version>
 ```
@@ -111,6 +114,27 @@ nl '%1$s, ik woon in %2$s. Wist je dat niet?' => KOEN, ik woon in ANTWERPEN. Wis
 
 fr 'I live in %2$s. You didn't knew that %1$s?" => I live in ANTWERP. You didn't knew that KOEN?
 ```
+
+### Plurals
+
+Since 8.0.0 plurals are supported. To specify a plural, you can use the following syntax in the json file:
+
+```json
+{
+  "example_plural": {
+    "zero": "You have no items",
+    "one": "You have %1$d item",
+    "two": "You have 2 items, party!",
+    "few": "You have a few items, nice!",
+    "many": "You have many items, fantastic!",
+    "other": "You have %1$d items"
+  }
+}
+```
+This will generate functions where you pass the number of items as an argument. The function will then return the correct translation based on the number of items.
+The count argument *WILL NOT* be passed as an argument for string interpolation.
+
+Note that the "other" key is always required, the other keys are dependant on the language in question
 
 ### Working on mac?
 
