@@ -1,6 +1,7 @@
 # Changelog
 ## [8.0.0] - 2022-09-26
 ### Breaking
+- Version bump to locale_gen [8.0.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v8.0.0)
 - Arguments are now formatted using the [sprintf](https://pub.dev/packages/sprintf) package. This means %d now refers to integers only. Use %f to format doubles, you can also use some format specifiers, eg: (%.2f will show 2 decimals)
 - This means that the sprintf package must be added to the pubspec.yaml (at least ^6.0.2)
 
