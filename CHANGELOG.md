@@ -1,4 +1,9 @@
 # Changelog
+## [9.0.0] - 2022-10-03
+### Breaking
+- Version bump to locale_gen [9.0.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v9.0.0)
+- Translations can no longer be accessed from static methods on the Localization class. Instead you now need to manually manage the different localization instances. Migration steps are described in the readme.
+
 ## [8.0.0] - 2022-09-26
 ### Breaking
 - Version bump to locale_gen [8.0.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v8.0.0)

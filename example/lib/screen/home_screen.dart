@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:icapps_translations_example/util/locale/localization.dart';
 import 'package:icapps_translations_example/viewmodel/locale/locale_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -32,14 +31,15 @@ class HomeScreen extends StatelessWidget {
               onPressed: Provider.of<LocaleViewModel>(context).onSwitchToDutch,
             ),
             const SizedBox(height: 22),
-            Text(Localization.test),
-            Text(Localization.testArg1('string')),
-            Text(Localization.testArg2(1)),
-            Text(Localization.testArg3('string', 1)),
-            Text(Localization.testArg4('string', 1)),
-            Text(Localization.testNonPositional('string', 1)),
-            Text(Localization.testPlural(4, 4)),
-            Text(Localization.testPlural(1, 1)),
+            Text(LocaleViewModel.localizationInstance.test),
+            Text(LocaleViewModel.localizationInstance.testArg1('string')),
+            Text(LocaleViewModel.localizationInstance.testArg2(1)),
+            Text(LocaleViewModel.localizationInstance.testArg3('string', 1)),
+            Text(LocaleViewModel.localizationInstance.testArg4('string', 1)),
+            Text(LocaleViewModel.localizationInstance
+                .testNonPositional('string', 1)),
+            Text(LocaleViewModel.localizationInstance.testPlural(4, 4)),
+            Text(LocaleViewModel.localizationInstance.testPlural(1, 1)),
           ],
         ),
       ),

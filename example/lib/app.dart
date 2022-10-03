@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:icapps_translations_example/screen/home_screen.dart';
-import 'package:icapps_translations_example/util/locale/localization.dart';
 import 'package:icapps_translations_example/viewmodel/locale/locale_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -21,8 +20,9 @@ class MyApp extends StatelessWidget {
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
-          locale: Localization.locale,
-          supportedLocales: Localization.supportedLocales,
+          locale: LocaleViewModel.localizationInstance.locale,
+          supportedLocales:
+              LocaleViewModel.localizationInstance.supportedLocales,
           home: HomeScreen(),
         ),
       ),
