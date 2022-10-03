@@ -3,7 +3,10 @@ import 'package:icapps_translations_example/repository/locale_repository.dart';
 import 'package:icapps_translations_example/util/locale/localization.dart';
 
 class LocaleViewModel with ChangeNotifier {
+  static final Localization _localizationInstance = Localization();
   final LocaleRepository _localeRepository;
+
+  static Localization get localizationInstance => _localizationInstance;
 
   LocaleViewModel(this._localeRepository);
 
@@ -13,7 +16,7 @@ class LocaleViewModel with ChangeNotifier {
 
   Future<void> initLocale() async {
     final locale = await _localeRepository.getCustomLocale();
-    await Localization.load(locale: locale);
+    await _localizationInstance.load(locale: locale);
     notifyListeners();
   }
 
@@ -31,7 +34,7 @@ class LocaleViewModel with ChangeNotifier {
 
   Future<void> _onUpdateLocaleClicked(Locale? locale) async {
     await _localeRepository.setCustomLocale(locale);
-    await Localization.load(locale: locale);
+    await _localizationInstance.load(locale: locale);
     notifyListeners();
   }
 }
