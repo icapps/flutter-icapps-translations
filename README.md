@@ -180,5 +180,5 @@ Packages used:
  - flutter_localizations
  - shared_preferences
  - provider
- - kiwi
+ - sprintf
  - icapps_translations

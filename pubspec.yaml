@@ -1,6 +1,6 @@
 name: icapps_translations
 description: Dart tool to generate flutter translations code from the icapps translations tool
-version: 9.0.0
+version: 10.0.0
 homepage: https://github.com/icapps/flutter-icapps-translations
 
 environment:
@@ -8,9 +8,9 @@ environment:
 
 dependencies:
   http: ^0.13.5
-  locale_gen: ^9.0.0
+  locale_gen: ^10.0.0
   path: ^1.8.2
 
 dev_dependencies:
-  lints: ^2.0.0
-  test: ^1.21.6
+  lints: ^2.0.1
+  test: ^1.22.2

@@ -1,4 +1,9 @@
 # Changelog
+## [10.0.0] - 2023-01-16
+BREAKING CHANGE!!
+- After some time of using the new locale_gen package. It made our lifes harder than before. For now we reverted the .of(context) removal
+- singleton implementation Other changes like sprintf, plurals and dependency updates are still in place.
+
 ## [9.0.0] - 2022-10-03
 ### Breaking
 - Version bump to locale_gen [9.0.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v9.0.0)
