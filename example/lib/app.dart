@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:icapps_translations_example/screen/home_screen.dart';
+import 'package:icapps_translations_example/util/locale/localization_delegate.dart';
 import 'package:icapps_translations_example/viewmodel/locale/locale_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -11,18 +12,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<LocaleViewModel>(
       child: Consumer<LocaleViewModel>(
-        builder: (context, value, child) => MaterialApp(
+        builder: (context, viewModel, child) => MaterialApp(
           title: 'icapps translations',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
+          localizationsDelegates: [
+            viewModel.localeDelegate,
+            ...GlobalMaterialLocalizations.delegates,
             GlobalWidgetsLocalizations.delegate,
           ],
-          locale: LocaleViewModel.localizationInstance.locale,
-          supportedLocales:
-              LocaleViewModel.localizationInstance.supportedLocales,
+          locale: viewModel.localeDelegate.activeLocale,
+          supportedLocales: LocalizationDelegate.supportedLocales,
           home: HomeScreen(),
         ),
       ),
