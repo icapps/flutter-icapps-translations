@@ -5,6 +5,8 @@ import 'package:icapps_translations_example/viewmodel/locale/locale_viewmodel.da
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final localization = Localization.of(context);
@@ -19,18 +21,16 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             MaterialButton(
+              onPressed: Provider.of<LocaleViewModel>(context).onSwitchToSystemLanguage,
               child: const Text('System Language (Not translated)'),
-              onPressed: Provider.of<LocaleViewModel>(context)
-                  .onSwitchToSystemLanguage,
             ),
             MaterialButton(
+              onPressed: Provider.of<LocaleViewModel>(context).onSwitchToEnglish,
               child: const Text('English (Not translated)'),
-              onPressed:
-                  Provider.of<LocaleViewModel>(context).onSwitchToEnglish,
             ),
             MaterialButton(
-              child: const Text('Nederlands (Not translated)'),
               onPressed: Provider.of<LocaleViewModel>(context).onSwitchToDutch,
+              child: const Text('Nederlands (Not translated)'),
             ),
             const SizedBox(height: 22),
             Text(localization.test),

@@ -1,4 +1,7 @@
 # Changelog
+## [11.0.0] - 2023-06-05
+- Version bump to locale_gen [12.0.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v12.0.0)
+
 ## [10.0.0] - 2023-01-16
 BREAKING CHANGE!!
 - After some time of using the new locale_gen package. It made our lifes harder than before. For now we reverted the .of(context) removal
