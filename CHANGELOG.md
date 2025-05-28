@@ -1,4 +1,7 @@
 # Changelog
+## [12.0.0] - 2025-05-28
+- Version bump to locale_gen [12.4.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v12.4.0)
+
 ## [11.0.0] - 2023-06-05
 - Version bump to locale_gen [12.0.0](https://github.com/vanlooverenkoen/locale_gen/releases/tag/v12.0.0)
 
