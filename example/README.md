@@ -1,25 +1,16 @@
-# Example for the icapps translations
+# example
 
-Place your default language in (in this case 'en' is my default language)':
+A new Flutter project.
 
-```
-root-project/assets/locale/en.json
-```
+## Getting Started
 
-### Run package with Flutter
+This project is a starting point for a Flutter application.
 
-```
-flutter packages pub run icapps_translations
-```
+A few resources to get you started if this is your first Flutter project:
 
-### Run package with Dart
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-```
-pub run icapps_translations
-```
-
-### Result
-
-Code will be generated in
-
-root-project/lib/util/locale
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
